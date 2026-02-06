@@ -1,0 +1,15 @@
+# Robots.txt para monicasanchezestetica.com
+# Medicina Estética Dra. Mónica Sánchez
+
+User-agent: *
+Allow: /
+
+# Bloquear acceso a recursos internos
+Disallow: /js/
+Disallow: /css/
+
+# Sitemap
+Sitemap: https://www.monicasanchezestetica.com/sitemap.xml
+
+# Crawl-delay para evitar sobrecarga (opcional)
+Crawl-delay: 10

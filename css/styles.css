@@ -2260,3 +2260,226 @@ strong {
         font-size: var(--text-xl);
     }
 }
+
+/* -------------------- Zones Index Page -------------------- */
+.zones-intro {
+    max-width: 800px;
+    margin-bottom: var(--space-3xl);
+}
+
+.zones-grid-page h2 {
+    font-family: var(--font-serif);
+    font-size: var(--text-3xl);
+    color: var(--color-black);
+    margin-bottom: var(--space-2xl);
+    text-align: center;
+}
+
+.zones-category {
+    margin-bottom: var(--space-3xl);
+}
+
+.zones-category h3 {
+    font-family: var(--font-serif);
+    font-size: var(--text-xl);
+    color: var(--color-gold-dark);
+    margin-bottom: var(--space-lg);
+    padding-bottom: var(--space-sm);
+    border-bottom: 2px solid var(--color-beige);
+}
+
+.zones-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: var(--space-lg);
+}
+
+.zone-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-lg);
+    background: var(--color-white);
+    border: 1px solid var(--color-gray-200);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    transition: var(--transition-base);
+}
+
+.zone-card:hover {
+    border-color: var(--color-gold);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.zone-card-main {
+    background: var(--color-beige);
+    border-color: var(--color-gold);
+}
+
+.zone-info h4 {
+    font-family: var(--font-serif);
+    font-size: var(--text-lg);
+    color: var(--color-black);
+    margin-bottom: var(--space-xs);
+}
+
+.zone-info p {
+    font-size: var(--text-sm);
+    color: var(--color-gray-500);
+}
+
+.zone-time {
+    background: var(--color-beige);
+    color: var(--color-gold-dark);
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.zone-badge {
+    background: var(--color-gold);
+    color: var(--color-white);
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    font-weight: 500;
+}
+
+/* Zones Why Section */
+.zones-why {
+    background: var(--color-beige);
+    padding: var(--space-3xl);
+    border-radius: var(--radius-lg);
+    margin: var(--space-4xl) 0;
+}
+
+.zones-why h2 {
+    font-family: var(--font-serif);
+    font-size: var(--text-3xl);
+    color: var(--color-black);
+    margin-bottom: var(--space-2xl);
+    text-align: center;
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--space-xl);
+}
+
+.benefit-item {
+    text-align: center;
+}
+
+.benefit-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto var(--space-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-white);
+    border-radius: var(--radius-full);
+    color: var(--color-gold);
+}
+
+.benefit-icon svg {
+    width: 28px;
+    height: 28px;
+}
+
+.benefit-item h3 {
+    font-family: var(--font-serif);
+    font-size: var(--text-lg);
+    color: var(--color-black);
+    margin-bottom: var(--space-sm);
+}
+
+.benefit-item p {
+    font-size: var(--text-sm);
+    color: var(--color-gray-600);
+}
+
+/* Zones Treatments Grid */
+.zones-treatments {
+    text-align: center;
+}
+
+.zones-treatments h2 {
+    font-family: var(--font-serif);
+    font-size: var(--text-3xl);
+    color: var(--color-black);
+    margin-bottom: var(--space-md);
+}
+
+.zones-treatments > p {
+    margin-bottom: var(--space-2xl);
+    color: var(--color-gray-600);
+}
+
+.treatments-quick-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: var(--space-md);
+}
+
+.treatment-quick-card {
+    padding: var(--space-lg);
+    background: var(--color-white);
+    border: 1px solid var(--color-gray-200);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    transition: var(--transition-base);
+}
+
+.treatment-quick-card:hover {
+    border-color: var(--color-gold);
+    background: var(--color-beige);
+}
+
+.treatment-quick-card h4 {
+    font-family: var(--font-serif);
+    font-size: var(--text-base);
+    color: var(--color-black);
+    margin-bottom: var(--space-xs);
+}
+
+.treatment-quick-card p {
+    font-size: var(--text-xs);
+    color: var(--color-gray-500);
+}
+
+/* Responsive Zones Page */
+@media (max-width: 768px) {
+    .zones-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .zones-why {
+        padding: var(--space-xl);
+    }
+
+    .zones-why h2,
+    .zones-treatments h2,
+    .zones-grid-page h2 {
+        font-size: var(--text-2xl);
+    }
+
+    .benefits-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-lg);
+    }
+
+    .treatments-quick-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .benefits-grid {
+        grid-template-columns: 1fr;
+    }
+}
