@@ -174,7 +174,7 @@
 
                 <div class="contact-form-wrapper">
                     <h3>Envíame un mensaje</h3>
-                    <form class="contact-form" action="#" method="POST">
+                    <form class="contact-form" action="https://formspree.io/f/xpwzgkjq" method="POST">
                         <div class="form-group">
                             <label for="nombre">Nombre *</label>
                             <input type="text" id="nombre" name="nombre" required>
@@ -228,12 +228,22 @@
         <div class="container">
             <div class="clinic-gallery">
                 <div class="clinic-image">
-                    <img src="img/consulta/exterior-clinica.jpg"
-                        alt="Exterior de la clínica de medicina estética en Torrelavega" loading="lazy">
+                    <div class="clinic-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" width="60" height="60">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                            <polyline points="9 22 9 12 15 12 15 22"/>
+                        </svg>
+                        <span>Exterior de la clínica</span>
+                    </div>
                 </div>
                 <div class="clinic-image">
-                    <img src="img/consulta/entrada-consulta.jpg"
-                        alt="Entrada consulta Dra. Mónica Sánchez - Medicina Estética" loading="lazy">
+                    <div class="clinic-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" width="60" height="60">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                        <span>Pl. Mauro Muriedas, 5, bajo 1</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -242,12 +252,14 @@
     <!-- Map Section -->
     <section class="section">
         <div class="container">
-            <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2896.5!2d-4.0494!3d43.3492!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd494e25c0f4c1e5%3A0x8c2d9b4b8f8e0a0a!2sPl.%20Mauro%20Muriedas%2C%205%2C%2039300%20Torrelavega%2C%20Cantabria!5e0!3m2!1ses!2ses!4v1704000000000!5m2!1ses!2ses"
-                width="100%" height="400" style="border:0; display:block;" allowfullscreen="" loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-                title="Ubicación de la consulta de la Dra. Mónica Sánchez en Torrelavega">
-            </iframe>
+            <div class="map-container">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2896.5!2d-4.0494!3d43.3492!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd494e25c0f4c1e5%3A0x8c2d9b4b8f8e0a0a!2sPl.%20Mauro%20Muriedas%2C%205%2C%2039300%20Torrelavega%2C%20Cantabria!5e0!3m2!1ses!2ses!4v1704000000000!5m2!1ses!2ses"
+                    width="100%" height="400" style="border:0; display:block;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Ubicación de la consulta de la Dra. Mónica Sánchez en Torrelavega">
+                </iframe>
+            </div>
         </div>
     </section>
 

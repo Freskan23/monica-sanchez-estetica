@@ -100,23 +100,26 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // ==================== Form Validation ====================
+    // ==================== Form Validation & Submission ====================
     const contactForm = document.querySelector('.contact-form');
 
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
 
-            // Get form data
-            const formData = new FormData(contactForm);
-            const data = Object.fromEntries(formData);
-
             // Basic validation
             let isValid = true;
             const requiredFields = contactForm.querySelectorAll('[required]');
 
             requiredFields.forEach(field => {
-                if (!field.value.trim()) {
+                if (field.type === 'checkbox') {
+                    if (!field.checked) {
+                        isValid = false;
+                        field.classList.add('error');
+                    } else {
+                        field.classList.remove('error');
+                    }
+                } else if (!field.value.trim()) {
                     isValid = false;
                     field.classList.add('error');
                 } else {
@@ -145,28 +148,35 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             if (isValid) {
-                // Here you would typically send the form data to a server
-                // For now, we'll just show a success message
-
                 const submitBtn = contactForm.querySelector('button[type="submit"]');
-                const originalText = submitBtn.textContent;
-
                 submitBtn.textContent = 'Enviando...';
                 submitBtn.disabled = true;
 
-                // Simulate form submission
-                setTimeout(() => {
-                    contactForm.innerHTML = `
-                        <div style="text-align: center; padding: 40px 20px;">
-                            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#c9a86c" stroke-width="2" style="margin-bottom: 20px;">
-                                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
-                                <polyline points="22 4 12 14.01 9 11.01"/>
-                            </svg>
-                            <h3 style="margin-bottom: 10px;">¡Mensaje enviado!</h3>
-                            <p style="color: #707070;">Gracias por contactar. Te responderé lo antes posible.</p>
-                        </div>
-                    `;
-                }, 1500);
+                const formData = new FormData(contactForm);
+
+                fetch(contactForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: { 'Accept': 'application/json' }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        contactForm.innerHTML = '<div class="form-success"><svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#c9a86c" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><h3>Mensaje enviado</h3><p>Gracias por contactar. Te responder\u00e9 lo antes posible.</p></div>';
+                    } else {
+                        throw new Error('Error en el envío');
+                    }
+                })
+                .catch(() => {
+                    submitBtn.textContent = 'Enviar mensaje';
+                    submitBtn.disabled = false;
+                    // Fallback: open email client
+                    const nombre = formData.get('nombre') || '';
+                    const mensaje = formData.get('mensaje') || '';
+                    const tratamiento = formData.get('tratamiento') || '';
+                    const subject = 'Consulta desde la web - ' + nombre;
+                    const body = 'Nombre: ' + nombre + '%0D%0ATratamiento: ' + tratamiento + '%0D%0A%0D%0A' + mensaje;
+                    window.location.href = 'mailto:dra.monicasanchezs@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + body;
+                });
             }
         });
 
@@ -174,6 +184,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const formInputs = contactForm.querySelectorAll('input, textarea, select');
         formInputs.forEach(input => {
             input.addEventListener('input', function() {
+                this.classList.remove('error');
+            });
+            input.addEventListener('change', function() {
                 this.classList.remove('error');
             });
         });
@@ -293,12 +306,10 @@ document.addEventListener('DOMContentLoaded', function() {
         initializeCookies();
     }
 
-    // ==================== Scroll to Top Button (Optional) ====================
-    // Uncomment if you want to add a scroll to top button
-    /*
+    // ==================== Scroll to Top Button ====================
     const scrollTopBtn = document.createElement('button');
     scrollTopBtn.className = 'scroll-top-btn';
-    scrollTopBtn.innerHTML = '↑';
+    scrollTopBtn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>';
     scrollTopBtn.setAttribute('aria-label', 'Volver arriba');
     document.body.appendChild(scrollTopBtn);
 
@@ -308,12 +319,11 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             scrollTopBtn.classList.remove('visible');
         }
-    });
+    }, { passive: true });
 
     scrollTopBtn.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
-    */
 
 });
 
